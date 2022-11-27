@@ -1,16 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SneakersDeal{% endblock %}
+{% block title %}SneakersDeal
+{% endblock %}
 
 
 {% block body  %}
-{% block navbar %}
-{% endblock %}
-
-<div class="text-3xl font-bold text-white">
-
-Your <span class="text-teal-600">sneakers</span>  to the best price  and in a <span class="text-teal-600">secured</span> way</div>
-
-    
-</div>
+	{% block navbar %}{% endblock %}
+	<div class="row">
+		<div class="col-6 my-5 ">
+			<p class="text-white display-2 fw-bold">
+				Your
+				<span class="text-primary">sneakers</span>
+				to the best price and in a
+				<span class="text-primary">secured</span>
+				way
+			</p>
+		</div>
+		<div class="col text-end">
+			<img class="" src="{{asset('build/images/Jordan1.png')}}" alt="shoes">
+		</div>
+	</div>
 {% endblock %}
