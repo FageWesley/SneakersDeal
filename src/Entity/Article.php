@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -14,32 +16,35 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $price = null;
+    #[ORM\Column]
+    private ?float $price = null;
 
-    #[ORM\ManyToOne(inversedBy: 'articles')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user_id = null;
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'buyedArticles')]
+    private Collection $customers;
 
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): self
+    public function setTitle(string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
@@ -56,28 +61,39 @@ class Article
         return $this;
     }
 
-    public function getPrice(): ?string
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
 
         return $this;
     }
-
-    public function getUserId(): ?User
+    
+    /**
+     * @return Collection<int, User>
+     */
+    public function getCustomers(): Collection
     {
-        return $this->user_id;
+        return $this->customers;
     }
 
-    public function setUserId(?User $user_id): self
+    public function addCustomer(User $customer): self
     {
-        $this->user_id = $user_id;
+        if (!$this->customers->contains($customer)) {
+            $this->customers->add($customer);
+        }
 
         return $this;
     }
 
+    public function removeCustomer(User $customer): self
+    {
+        $this->customers->removeElement($customer);
+
+        return $this;
+    }
 }

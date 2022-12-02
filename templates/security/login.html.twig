@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+	<form action="" method="post" class="text-white">
+		<label for="username">Nom d'utilisateur</label>
+		<input type="text" name="_username" id="username" required value="{{ last_username }}" class="form-control">
+
+		<label for="password">mot de passe</label>
+		<input type="text" name="_password" id="password" required class="form-control">
+
+
+		<div class="text-center mt-3">
+			<input type="submit" value="Connexion" class="btn btn-primary">
+
+		</div>
+
+
+	</form>
+
+
+{% endblock %}
