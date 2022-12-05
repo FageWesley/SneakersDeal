@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -26,6 +27,12 @@ class Article
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'buyedArticles')]
     private Collection $customers;
+
+    #[ORM\Column]
+    private ?bool $isReleased = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $ReleaseDate = null;
 
     public function __construct()
     {
@@ -93,6 +100,31 @@ class Article
     public function removeCustomer(User $customer): self
     {
         $this->customers->removeElement($customer);
+
+        return $this;
+    }
+
+    public function isIsReleased(): ?bool
+    {
+        return $this->isReleased;
+    }
+
+    public function setIsReleased(bool $isReleased): self
+    {
+        
+        $this->isReleased = $isReleased;
+
+        return $this;
+    }
+
+    public function getReleaseDate(): ?\DateTimeInterface
+    {
+        return $this->ReleaseDate;
+    }
+
+    public function setReleaseDate(\DateTimeInterface $ReleaseDate): self
+    { 
+        $this->ReleaseDate = $ReleaseDate;
 
         return $this;
     }

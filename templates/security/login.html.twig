@@ -1,13 +1,26 @@
 {% extends "base.html.twig" %}
+{% block navbar %}
+{% endblock %}
 
 
 {% block body %}
+
+	<img class="m-4" style="width:100px;height:100px" src="{{ asset('build/images/Logo.png') }}" alt="">
+
+
+
+	<div class="row container">
+
+	
+	<div class="offset-1 col">
+	<div class="display-6 text-center mb-2 text-white">Log in to SneakersDeal</div>
+	<p class="text-center text-white">Don't hav an account yet ? <a href="create-account" >Sign up!</a></p>
 	<form action="" method="post" class="text-white">
 		<label for="username">Nom d'utilisateur</label>
-		<input type="text" name="_username" id="username" required value="{{ last_username }}" class="form-control">
+		<input type="text" name="_username" id="username" required value="{{ last_username }}" class="form-control  border-primary bg-black col-2" style="border:2px solid">
 
 		<label for="password">mot de passe</label>
-		<input type="text" name="_password" id="password" required class="form-control">
+		<input type="text" name="_password" id="password" required class="form-control border-primary bg-black" style="border:2px solid">
 
 
 		<div class="text-center mt-3">
@@ -18,5 +31,20 @@
 
 	</form>
 
+	
+	</div>
+	<div class="col"><img style="" src="{{ asset('build/images/AF1-LV.png') }}" alt=""></div>
+	
+	
+	</div>
+
+
+
+
+
+
+
+
+	
 
 {% endblock %}

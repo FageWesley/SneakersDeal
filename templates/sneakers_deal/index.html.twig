@@ -5,10 +5,10 @@
 
 
 {% block body  %}
-	{% block navbar %}{% endblock %}
-	<div class="row">
-		<div class="col-6 my-5 ">
-			<p class="text-white display-2 fw-bold">
+	
+	<div class="row mx-0">
+		<div class="col-5 my-5 ">
+			<p class="text-white display-2 fw-bold ms-4 ">
 				Your
 				<span class="text-primary">sneakers</span>
 				to the best price and in a
@@ -16,12 +16,27 @@
 				way
 			</p>
 		</div>
-		<div class="col text-end">
-			<img class="mt-5" src="{{asset('build/images/Jordan1.png')}}" alt="shoes">
+		<div class="col text-end mt-3">
+			<img class="mt-5 position-absolute end-0" src="{{asset('build/images/Jordan1.png')}}" alt="shoes">
 		</div>
 	</div>
 
+	<a href="" class="text-white display-5 fw-bold ms-3 mt-2 pt-4 text-decoration-none">
+		Next Drops</a>
 
-	
+	<p class="border-top  border-3 border-primary col-6 ms-3  "></p>
+	<div class="container">
+		<d class=" row ">
 
+			{% for item in list %}
+				<a href="" class="card text-start col offset-1 mx-2 bg-gradient-primary mt-3 p-0 text-decoration-none text-black" style="width:225px;height:270px">
+					<img src="{{item.image}}" class="" style="width:initial;height: 175px; object-fit:scale-down" alt="">
+					<h1 class="fs-6 ">{{item.title}}</h1>
+					<p class="d-flex align-items-end">Price :
+						{{item.price}}$</p>
+				</a>
+			{% endfor %}
+
+		</d>
+	</div>
 {% endblock %}

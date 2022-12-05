@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -29,6 +30,10 @@ class ArticleType extends AbstractType
                 'label'=>"Prix",
                 "row_attr" =>['class'=>"text-white col-md-4 fs-3 offset-4"],
                 "attr" =>['class'=>"form-control"]   
+            ])
+            ->add('ReleaseDate', DateType::class,[
+                "row_attr" =>['class'=>"text-white col-md-4 fs-3 offset-4"],
+                "attr" =>['class'=>"form-control"]
             ])
             
         ;
