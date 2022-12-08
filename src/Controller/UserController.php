@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\PlaintextPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -25,7 +26,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/create-account', name: 'create-account')]
+    #[Route('/registration', name: 'registration')]
     public function create(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User($passwordHasher);
@@ -33,13 +34,14 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $doctrine->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirect('/index.html.twig');
+            return $this->redirectToRoute('/');
         }
 
-        return $this->render('/user/create-account.html.twig', [
+        return $this->render('security/registration.html.twig', [
             'form' => $form->createView()
         ]);
     }

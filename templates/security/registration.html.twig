@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+{% block navbar %}{% endblock %}
+
+
+{% block body %}
+
+	<a href="/"><img class="m-4" style="width:70px;height:70px" src="{{ asset('build/images/Logo.png') }}" alt=""></a>
+
+
+	<div class="row m-0">
+
+
+		<div class="offset-lg-1 offset-md-1 offset-sm-1 col-lg-6 col-sm-10">
+			<div class="display-6 text-center mb-2 text-white">Create account</div>
+			<p class="text-center text-white">Already have an account ?
+				<a href="/login">Log in!</a>
+			</p>
+
+			<div class="offset-lg-2 offset-md-0 col-lg-8 ">
+				{{form_start(form)}}
+				{{form_row(form.username)}}
+				{{form_row(form.password)}}
+
+				{# <label for="username">Username</label>
+													<input type="text" name="_username" id="username" required value="" class="form-control  border-primary bg-black " style="border:2px solid; color: white" placeholder="Username">
+								
+													<label for="password" class="mt-2">Password</label>
+													<input type="paswword" name="_password" id="password" required class="form-control border-primary bg-black color-white" style="border:2px solid; color:white" placeholder="Password">
+													<label for="password" class="mt-2">Confirm password</label>
+													<input type="password" name="_password" id="password" required class="form-control border-primary bg-black color-white" style="border:2px solid; color:white" placeholder="Password"> #}
+				<p class="text-white mt-2 text-center">By creating an account, i agree with SneakersDeal's
+					<a href="">Privacy Policy</a>
+					and
+					<a href="">Terms of Service</a>
+				</p>
+			</div>
+
+
+			<div class="text-center mt-3">
+				<input type="submit" value="Create account" class="btn btn-primary">
+
+			</div>
+			{{form_end(form)}}
+
+		</div>
+		<img style="" class="offset-lg-0 col-lg-4 col-md-4 col-sm-6 offset-sm-4 img-fluid mt-2" src="{{ asset('build/images/AF1-LV.png') }}" alt="">
+
+
+	</div>
+
+
+{% endblock %}

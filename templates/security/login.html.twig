@@ -1,50 +1,45 @@
 {% extends "base.html.twig" %}
-{% block navbar %}
-{% endblock %}
+{% block navbar %}{% endblock %}
 
 
 {% block body %}
 
-	<img class="m-4" style="width:100px;height:100px" src="{{ asset('build/images/Logo.png') }}" alt="">
+	<a href="/"><img class="m-4" style="width:70px;height:70px" src="{{ asset('build/images/Logo.png') }}" alt=""></a>
 
 
-
-	<div class="row container">
-
-	
-	<div class="offset-1 col">
-	<div class="display-6 text-center mb-2 text-white">Log in to SneakersDeal</div>
-	<p class="text-center text-white">Don't hav an account yet ? <a href="create-account" >Sign up!</a></p>
-	<form action="" method="post" class="text-white">
-		<label for="username">Nom d'utilisateur</label>
-		<input type="text" name="_username" id="username" required value="{{ last_username }}" class="form-control  border-primary bg-black col-2" style="border:2px solid">
-
-		<label for="password">mot de passe</label>
-		<input type="text" name="_password" id="password" required class="form-control border-primary bg-black" style="border:2px solid">
+	<div class="row m-0">
 
 
-		<div class="text-center mt-3">
-			<input type="submit" value="Connexion" class="btn btn-primary">
+		<div class="offset-lg-1 offset-md-1 offset-sm-1 col-lg-6 col-sm-10">
+			<div class="display-6 text-center mb-2 text-white">Log in to SneakersDeal</div>
+			<p class="text-center text-white">Don't hav an account yet ?
+				<a href="/registration">Sign up!</a>
+			</p>
+			<form action="" method="post" class="text-white">
+				<div class="offset-lg-2 offset-md-0 col-lg-8 ">
+					<label for="username">Username</label>
+					<input type="text" name="_username" id="username" required value="{{ last_username }}" class="form-control  border-primary bg-black " style="border:2px solid; color: white" placeholder="Username">
+
+					<label for="password" class="mt-2">Password</label>
+					<input type="password" name="_password" id="password" required class="form-control border-primary bg-black color-white" style="border:2px solid; color:white" placeholder="Password">
+				<p class="text-secondary mt-1 text-end ">Forgot password ?</p>
+				</div>
+				
+
+				<div class="text-center mt-3">
+					<input type="submit" value="Log in" class="btn btn-primary">
+
+				</div>
+
+
+			</form>
+
 
 		</div>
+		<img style="" class="offset-lg-0 col-lg-4 col-md-4 col-sm-6 offset-sm-4 img-fluid mt-2" src="{{ asset('build/images/AF1-LV.png') }}" alt="">
 
 
-	</form>
-
-	
-	</div>
-	<div class="col"><img style="" src="{{ asset('build/images/AF1-LV.png') }}" alt=""></div>
-	
-	
 	</div>
 
-
-
-
-
-
-
-
-	
 
 {% endblock %}
