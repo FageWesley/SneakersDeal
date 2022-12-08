@@ -3,25 +3,34 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Form\ArticleType;
+use App\Form\ProductType;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
-    #[Route('/article/create')]
-    public function create(Request $request, ManagerRegistry $doctrine): Response
+    #[Route('/products/create')]
+    public function create(Request $request, ManagerRegistry $doctrine, FileUploader $fileUploader): Response
     {
         $article = new Article();
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(ProductType::class, $article);
         $date = new DateTime();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+            if($imageFile){
+                $image= $fileUploader->upload($imageFile);
+                $article->setImage($image);
+            }
+
 
             if ($article->getReleaseDate() > $date) {
                 $article->setIsReleased(false);
@@ -34,7 +43,7 @@ class ArticleController extends AbstractController
             
         }
 
-        return $this->render("article/index.html.twig", [
+        return $this->render("products/create.html.twig", [
             "form" => $form->createView()
         ]);
     }

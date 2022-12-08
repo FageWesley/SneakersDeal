@@ -19,15 +19,7 @@
 			<div class="offset-lg-2 offset-md-0 col-lg-8 ">
 				{{form_start(form)}}
 				{{form_row(form.username)}}
-				{{form_row(form.password)}}
-
-				{# <label for="username">Username</label>
-													<input type="text" name="_username" id="username" required value="" class="form-control  border-primary bg-black " style="border:2px solid; color: white" placeholder="Username">
-								
-													<label for="password" class="mt-2">Password</label>
-													<input type="paswword" name="_password" id="password" required class="form-control border-primary bg-black color-white" style="border:2px solid; color:white" placeholder="Password">
-													<label for="password" class="mt-2">Confirm password</label>
-													<input type="password" name="_password" id="password" required class="form-control border-primary bg-black color-white" style="border:2px solid; color:white" placeholder="Password"> #}
+				{{form_widget(form.password,{'attr':{"style":"color:white"}})}}
 				<p class="text-white mt-2 text-center">By creating an account, i agree with SneakersDeal's
 					<a href="">Privacy Policy</a>
 					and

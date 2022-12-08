@@ -16,16 +16,20 @@ class CreateAccountType extends AbstractType
     {
         $builder
             ->add('username',TextType::class,[
-                "attr"=>['class'=>'form-control border-primary bg-black color-white',"placeholder"=> "Username",'style'=>"border:2px solid; color:white"]
+                "attr"=>['class'=>'form-control border-primary bg-black color-white',"placeholder"=> "Username",'style'=>"border:2px solid; color:white"],
+                "required" => true,
+                "row_attr"=>["style"=>"color:white"]
                 ])
             
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
-                'options' => ['attr' => ['class' => 'password-field form-control border-primary bg-black color-white','style'=>"border:2px solid; color:white","placeholder"=> "Password",]],
+                'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'Password', 'attr' => ['class' => 'password-field form-control border-primary bg-transparent text-white ','style'=>"border:2px solid; color:white","placeholder"=> "Password"]],
+                'second_options' => ['label' => 'Confirm Password', 'attr' => ['class' => 'password-field form-control border-primary bg-transparent text-white','style'=>"border:2px solid; color:white","placeholder"=> "Password"]],
+                
+                
                 
             
             

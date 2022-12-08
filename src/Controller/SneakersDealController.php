@@ -28,4 +28,9 @@ class SneakersDealController extends AbstractController
             'list' => $list
         ]);
     }   
+    #[Route('/php')]
+    public function test()
+    {
+        phpinfo();
+    }    
 }

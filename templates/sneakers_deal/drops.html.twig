@@ -9,7 +9,7 @@
 
 			<div class="card col">
 				<h1 class="text-truncate">{{item.title}}</h1>
-				<img src="{{item.image}}" alt="{{item.title}}">
+				<img src={{asset("uploads/#{item.image}") }} alt="{{item.title}}">
 				<p>Price :
 					{{item.price}}</p>
 			</div>
