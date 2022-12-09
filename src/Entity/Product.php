@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
+use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ArticleRepository::class)]
-class Article
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
+class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,7 +25,7 @@ class Article
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'buyedArticles')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'buyedProducts')]
     private Collection $customers;
 
     #[ORM\Column]

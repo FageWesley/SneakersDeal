@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
+use App\Entity\Product;
 use App\Form\ProductType;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,13 +13,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleController extends AbstractController
+class ProductController extends AbstractController
 {
-    #[Route('/products/create')]
+    #[Route('/product/create')]
     public function create(Request $request, ManagerRegistry $doctrine, FileUploader $fileUploader): Response
     {
-        $article = new Article();
-        $form = $this->createForm(ProductType::class, $article);
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
         $date = new DateTime();
         $form->handleRequest($request);
 
@@ -28,23 +28,32 @@ class ArticleController extends AbstractController
             $imageFile = $form->get('image')->getData();
             if($imageFile){
                 $image= $fileUploader->upload($imageFile);
-                $article->setImage($image);
+                $product->setImage($image);
             }
 
 
-            if ($article->getReleaseDate() > $date) {
-                $article->setIsReleased(false);
+            if ($product->getReleaseDate() > $date) {
+                $product->setIsReleased(false);
             } else {
-                $article->setIsReleased(true);
+                $product->setIsReleased(true);
             }
             $entityManager = $doctrine->getManager();
-            $entityManager->persist($article);
+            $entityManager->persist($product);
             $entityManager->flush();
             
         }
 
         return $this->render("products/create.html.twig", [
             "form" => $form->createView()
+        ]);
+    }
+
+    #[Route("/product/{id}", name:"product.details")]
+    
+    public function index(Product $product)
+    {
+        return $this->render("products/product.html.twig",[
+            "product" => $product
         ]);
     }
 }

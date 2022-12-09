@@ -29,7 +29,7 @@
 		<d class=" row ">
 
 			{% for item in list %}
-				<a href="" class="card text-start col offset-1 mx-2 bg-gradient-primary mt-3 p-0 text-decoration-none text-black" style="width:225px;height:270px">
+				<a href="{{ path('product.details', {id: item.id}) }}" class="card text-start col offset-1 mx-2 bg-gradient-primary mt-3 p-0 text-decoration-none text-black" style="width:225px;height:270px">
 					<img src="{{item.image}}" class="" style="width:initial;height: 175px; object-fit:scale-down" alt="">
 					<h1 class="fs-6 ">{{item.title}}</h1>
 					<p class="d-flex align-items-end">Price :
