@@ -15,22 +15,26 @@ class OrderItem
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Product $product = null;
+    private ? Product $product = null;
 
     #[ORM\Column]
     private ?int $quantity = null;
+
+    #[ORM\ManyToOne(inversedBy: 'items')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ? Order $orderRef = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getProduct(): ?Product
+    public function getProduct(): ? Product
     {
         return $this->product;
     }
 
-    public function setProduct(?Product $product): self
+    public function setProduct(? Product $product): self
     {
         $this->product = $product;
 
@@ -47,5 +51,37 @@ class OrderItem
         $this->quantity = $quantity;
 
         return $this;
+    }
+
+    public function getOrderRef(): ? Order
+    {
+        return $this->orderRef;
+    }
+
+    public function setOrderRef(? Order $orderRef): self
+    {
+        $this->orderRef = $orderRef;
+
+        return $this;
+    }
+    /**
+     * Tests if the given item given corresponds to the same order item.
+     *
+     * @param OrderItem $item
+     *
+     * @return bool
+     */
+    public function equals(OrderItem $item): bool
+    {
+        return $this->getProduct()->getId() === $item->getProduct()->getId();
+    }
+    /**
+     * Calculates the item total.
+     *
+     * @return float|int
+     */
+    public function getTotal(): float
+    {
+        return $this->getProduct()->getPrice() * $this->getQuantity();
     }
 }

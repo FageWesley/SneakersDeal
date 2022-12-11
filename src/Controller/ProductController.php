@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Form\AddToCartType;
 use App\Form\ProductType;
+use App\Manager\CartManager;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\FileUploader;
+use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,12 +51,31 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route("/product/{id}", name:"product.details")]
+    #[Route("/product/{id}", name:"product.detail")]
     
-    public function index(Product $product)
+    public function detail(Product $product, Request $request, CartManager $cartManager)
     {
-        return $this->render("products/product.html.twig",[
-            "product" => $product
+        $form = $this->createForm(AddToCartType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $item = $form->getData();
+            $item->setProduct($product);
+
+            $cart = $cartManager->getCurrentCart();
+            $cart
+                ->addItem($item)
+                ->setUpdatedAt(new DateTimeImmutable());
+
+            $cartManager->save($cart);
+
+            return $this->redirectToRoute('product.detail', ['id' => $product->getId()]);
+        }
+
+        return $this->render('products/product.html.twig', [
+            'product' => $product,
+            'form' => $form->createView()
         ]);
     }
 }

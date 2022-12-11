@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Product;
 use App\Entity\User;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -26,7 +27,9 @@ class AppFixtures extends Fixture
             $product
                 ->setTitle('Product ' . $i)
                 ->setImage('')
-                ->setPrice(mt_rand(10, 600));
+                ->setPrice(mt_rand(10, 600))
+                ->setIsReleased(0)
+                ->setReleaseDate(new DateTime("2023-01-01"));
 
             $manager->persist($product);
         }
