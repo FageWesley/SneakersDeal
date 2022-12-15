@@ -12,7 +12,7 @@
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 		{% endblock %}
 
@@ -20,26 +20,36 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body class="bg-black">
+	<body>
 
-		<div class="d-flex">
-			<p class="logo-title">
-				<img src="{{ asset('build/images/Logo.png') }}" alt="Logo">SneakersDeal
-			</p>
-
-			<form action="" method="get" class="searchbar offset-1 col-5">
-
-				<input type="search" name="search" id="search" placeholder="search" class="w-100">
-				<input type="submit" id="submit" value="search">
-			</form>
-			<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/drops"><i class="fa-solid fa-calendar"></i></a>
-			<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/"><i class="fa-solid fa-heart"></i></a>
-			<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-			{% if is_granted('IS_AUTHENTICATED') %}
-				<a class="col-1 text-white text-decoration-none d-flex align-items-center justify-content-evenly" href="/logout"><i class="fa-solid fa-arrow-right-from-bracket fs-3"></i>Logout</a>
-			{% else %}
-				<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-			{% endif %}
+		
+		<div class="container">
+			<input type="radio" name="slider" id="item-1" checked>
+			<input type="radio" name="slider" id="item-2">
+			<input type="radio" name="slider" id="item-3">
+			<div class="cards">
+				<label class="card" for="item-1" id="song-1">
+					<img src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80" alt="song">
+				</label>
+				<label class="card" for="item-2" id="song-2">
+					<img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="song">
+				</label>
+				<label class="card" for="item-3" id="song-3">
+					<img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+				</label>
+			</div>
 		</div>
+{# {% for item in list %}
+			<div class="container">
+				<input type="radio" name="slider" id="item-{{item.id}}" {% if (item.id == list.0.id ) %} checked {% endif %}>
+				<div class="cards">
+					<label for="item-{item.id}" class="card" id="song-{{item-id}}">
+						<img src="{{item.image}}" alt="{{item.title}}">
+					</label>
+				</div>
+			</div>
+
+
+		{% endfor %} #}
 	</body>
 </html></body></html>

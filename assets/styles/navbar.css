@@ -5,9 +5,12 @@ body::-webkit-scrollbar {
 body {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    background-color: #eceeee;
 }
-.Navbar{
-    background-color: #162638;
+
+.Navbar {
+    background-color: #0D3B66;
+    position: sticky;
 }
 
 .logo-title {
@@ -42,7 +45,7 @@ body {
 }
 
 .searchbar #submit {
-    background-color: teal;
+    background-color: #009C9D;
     border: 0px;
     padding: 7px;
     border-top-right-radius: 5px;
