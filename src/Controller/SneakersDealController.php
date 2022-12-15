@@ -33,4 +33,13 @@ class SneakersDealController extends AbstractController
     {
         # code...
     }
+    #[Route('/test', name: 'prototype')]
+    public function prototype(ManagerRegistry $doctrine): Response
+    {
+        $products = $doctrine->getRepository(Product::class);
+        $list = $products->findAll();
+        return $this->render('sneakers_deal/prototype.html.twig', [
+            'list' =>  $list
+        ]);
+    }
 }

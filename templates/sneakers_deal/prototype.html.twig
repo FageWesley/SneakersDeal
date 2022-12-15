@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body class="bg-black">
+
+		<div class="d-flex">
+			<p class="logo-title">
+				<img src="{{ asset('build/images/Logo.png') }}" alt="Logo">SneakersDeal
+			</p>
+
+			<form action="" method="get" class="searchbar offset-1 col-5">
+
+				<input type="search" name="search" id="search" placeholder="search" class="w-100">
+				<input type="submit" id="submit" value="search">
+			</form>
+			<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/drops"><i class="fa-solid fa-calendar"></i></a>
+			<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/"><i class="fa-solid fa-heart"></i></a>
+			<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+			{% if is_granted('IS_AUTHENTICATED') %}
+				<a class="col-1 text-white text-decoration-none d-flex align-items-center justify-content-evenly" href="/logout"><i class="fa-solid fa-arrow-right-from-bracket fs-3"></i>Logout</a>
+			{% else %}
+				<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+			{% endif %}
+		</div>
+	</body>
+</html></body></html>
