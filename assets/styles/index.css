@@ -1,4 +1,3 @@
-
 .main-page-div {
     margin-top: 124.6px;
 }
@@ -41,11 +40,18 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.drops-carrousel{
+
+.drops-carrousel {
+    width: 75%;
+    height: 500px;
+    margin: auto;
+}
+.section-drops{
     margin-top: 48px;
     border-radius: 3px;
     background: white;
 }
+
 .section-drop-title {
     width: 50%;
     padding-top: 48px;
@@ -53,6 +59,7 @@
     margin-left: 10px;
     border-bottom: #009C9D 3px solid;
 }
-.section-drop-title  a{
+
+.section-drop-title a {
     color: black;
 }

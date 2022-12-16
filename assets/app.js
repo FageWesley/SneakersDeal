@@ -7,8 +7,8 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
-/* import './styles/navbar.css';
-import './styles/index.css'; */
+import './styles/navbar.css';
+import './styles/index.css';
 import './styles/carrousel.scss';
 
 // start the Stimulus application

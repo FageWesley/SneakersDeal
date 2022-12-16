@@ -10,7 +10,10 @@ body {
 
 .Navbar {
     background-color: #0D3B66;
-    position: sticky;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .logo-title {

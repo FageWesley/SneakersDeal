@@ -35,25 +35,28 @@
 				<img src={{asset('/build/images/Jordan-logo.png')}} alt="">
 			</div>
 		</div>
-		<div class="drops-carrousel">
+		<div class="section-drops">
 			<div class="section-drop-title  display-5 fw-bold">
-				<a href="/drops" class="text-decoration-none" >
+				<a href="/drops" class="text-decoration-none">
 					Next Drops
 				</a>
 			</div>
-			
-			<div class="container">
-				<div class=" row ">
-
+			<div class="drops-carrousel">
+				<div class="container-carrousel">
 					{% for item in list %}
-						<a href="{{ path('product.detail', {id: item.id}) }}" class="card text-start col offset-1 mx-2 bg-gradient-primary mt-3 p-0 text-decoration-none text-black" style="width:225px;height:270px">
-							<img src="{{item.image}}" class="" style="width:initial;height: 175px; object-fit:scale-down" alt="">
-							<h1 class="fs-6 ">{{item.title}}</h1>
-							<p class="d-flex align-items-end">Price :
-								{{item.price}}$</p>
-						</a>
-					{% endfor %}
 
+
+						<input type="radio" name="slider" id="item-{{item.id}}" {% if (item.id == list.0.id ) %} checked {% endif %}>
+					{% endfor %}
+					<div class="cards">
+						{% for item in list %}
+
+
+							<label for="item-{{item.id}}" class="card-carrousel" id="song-{{item.id}}">
+								<img src="{{item.image}}" alt="{{item.title}}">
+							</label>
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 		</div>
