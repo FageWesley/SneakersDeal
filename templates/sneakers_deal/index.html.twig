@@ -5,38 +5,62 @@
 
 
 {% block body  %}
-	
-	<div class="row mx-0">
-		<div class="col-5 my-5 ">
-			<p class="text-white display-2 fw-bold ms-4 ">
-				Your
-				<span class="text-primary">sneakers</span>
-				to the best price and in a
-				<span class="text-primary">secured</span>
-				way
-			</p>
-		</div>
-		<div class="col text-end mt-3">
-			<img class="mt-5 position-absolute end-0" src="{{asset('build/images/Jordan1.png')}}" alt="shoes">
-		</div>
-	</div>
-
-	<a href="/drops" class="text-white display-5 fw-bold ms-3 mt-2 pt-4 text-decoration-none">
-		Next Drops</a>
-
-	<p class="border-top  border-3 border-primary col-6 ms-3  "></p>
 	<div class="container">
-		<d class=" row ">
+		<div class="main-page-div row text-white bg-dark mx-auto pe-0 border rounded-1">
+			<div class="col-5 my-5 ">
+				<p class="display-2 fw-bold ms-4 ">
+					Your
+					<span class="text-primary">sneakers</span>
+					to the best price and in a
+					<span class="text-primary">secured</span>
+					way
+				</p>
+			</div>
+			<div class="col p-0 text-end mt-3">
+				<img class="p-0 mt-5 ms-3 m	" src="{{asset('build/images/Jordan1.png')}}" alt="shoes">
+			</div>
+		</div>
 
-			{% for item in list %}
-				<a href="" class="card text-start col offset-1 mx-2 bg-gradient-primary mt-3 p-0 text-decoration-none text-black" style="width:225px;height:270px">
-					<img src="{{item.image}}" class="" style="width:initial;height: 175px; object-fit:scale-down" alt="">
-					<h1 class="fs-6 ">{{item.title}}</h1>
-					<p class="d-flex align-items-end">Price :
-						{{item.price}}$</p>
+		<div class="brand-cards mt-5">
+			<div class="card-logo">
+				<img src={{asset('/build/images/Nike-logo.png')}} alt="">
+			</div>
+			<div class="card-logo">
+				<img src={{asset('/build/images/Adidas-logo.png')}} alt="">
+			</div>
+			<div class="card-logo">
+				<img src={{asset('/build/images/New-Balance-logo.png')}} alt="">
+			</div>
+			<div class="card-logo">
+				<img src={{asset('/build/images/Jordan-logo.png')}} alt="">
+			</div>
+		</div>
+		<div class="section-drops">
+			<div class="section-drop-title  display-5 fw-bold">
+				<a href="/drops" class="text-decoration-none">
+					Next Drops
 				</a>
-			{% endfor %}
+			</div>
+			<div class="drops-carrousel">
+				<div class="container-carrousel">
+					{% for item in list %}
 
-		</d>
+
+						<input type="radio" name="slider" id="item-{{item.id}}" {% if (item.id == list.0.id ) %} checked {% endif %}>
+					{% endfor %}
+					<div class="cards">
+						{% for item in list %}
+
+
+							<label for="item-{{item.id}}" class="card-carrousel" id="song-{{item.id}}">
+								<img src="{{item.image}}" alt="{{item.title}}">
+							</label>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+
 {% endblock %}

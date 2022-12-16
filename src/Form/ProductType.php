@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Article;
+use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -18,13 +18,13 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('title', TypeTextType::class, [
-                'label' => "Titre de l'article",
+                'label' => "Nom du produit",
                 "row_attr" => ['class' => "text-white col-md-4 fs-3 offset-4"],
                 "attr" => ['class' => "form-control"],
                 "required" => true,
             ])
             ->add('image', FileType::class, [
-                'label' => "Image de l'article",
+                'label' => "Image du produit",
                 "row_attr" => ['class' => "text-white col-md-4 fs-3 offset-4"],
                 "attr" => ['class' => "form-control"],
                 "mapped" => false,
@@ -57,7 +57,7 @@ class ProductType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Article::class,
+            'data_class' => Product::class,
         ]);
     }
 }

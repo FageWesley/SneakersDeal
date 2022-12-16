@@ -1,0 +1,65 @@
+.main-page-div {
+    margin-top: 124.6px;
+}
+
+.card-logo {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+    background: #009C9D;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px #757878;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.card-logo:hover {
+    -webkit-filter: brightness(60%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+
+}
+
+.card-logo img {
+    width: 450px;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+.brand-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.drops-carrousel {
+    width: 75%;
+    height: 500px;
+    margin: auto;
+}
+.section-drops{
+    margin-top: 48px;
+    border-radius: 3px;
+    background: white;
+}
+
+.section-drop-title {
+    width: 50%;
+    padding-top: 48px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    border-bottom: #009C9D 3px solid;
+}
+
+.section-drop-title a {
+    color: black;
+}

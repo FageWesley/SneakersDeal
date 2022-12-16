@@ -30,13 +30,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'customers')]
-    private Collection $buyedArticles;
+    #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'customers')]
+    private Collection $buyedProducts;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
-        $this->buyedArticles = new ArrayCollection();
+        $this->buyedProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,27 +107,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Article>
+     * @return Collection<int, Product>
      */
-    public function getBuyedArticles(): Collection
+    public function getBuyedProducts(): Collection
     {
-        return $this->buyedArticles;
+        return $this->buyedProducts;
     }
 
-    public function addBuyedArticle(Article $buyedArticle): self
+    public function addBuyedProduct(Product $buyedProduct): self
     {
-        if (!$this->buyedArticles->contains($buyedArticle)) {
-            $this->buyedArticles->add($buyedArticle);
-            $buyedArticle->addCustomer($this);
+        if (!$this->buyedProducts->contains($buyedProduct)) {
+            $this->buyedProducts->add($buyedProduct);
+            $buyedProduct->addCustomer($this);
         }
 
         return $this;
     }
 
-    public function removeBuyedArticle(Article $buyedArticle): self
+    public function removeBuyedProduct(Product $buyedProduct): self
     {
-        if ($this->buyedArticles->removeElement($buyedArticle)) {
-            $buyedArticle->removeCustomer($this);
+        if ($this->buyedProducts->removeElement($buyedProduct)) {
+            $buyedProduct->removeCustomer($this);
         }
 
         return $this;
