@@ -46,14 +46,14 @@
 					{% for item in list %}
 
 
-						<input type="radio" name="slider" id="item-{{item.id}}" {% if (item.id == list.0.id ) %} checked {% endif %}>
+						<input type="radio" name="slider" id="item-{{loop.index}}" {% if (loop.index == 1) %} checked {% endif %}>
 					{% endfor %}
 					<div class="cards">
 						{% for item in list %}
 
 
-							<label for="item-{{item.id}}" class="card-carrousel" id="song-{{item.id}}">
-								<img src="{{item.image}}" alt="{{item.title}}">
+							<label for="item-{{loop.index}}" class="card-carrousel" id="song-{{loop.index}}">
+								<img src={{item.image}} alt="{{item.title}}">
 							</label>
 						{% endfor %}
 					</div>
