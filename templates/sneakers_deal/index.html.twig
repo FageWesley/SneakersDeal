@@ -43,13 +43,13 @@
 			</div>
 			<div class="drops-carrousel">
 				<div class="container-carrousel">
-					{% for item in list %}
+					{% for item in drops %}
 
 
 						<input type="radio" name="slider" id="item-{{loop.index}}" {% if (loop.index == 1) %} checked {% endif %}>
 					{% endfor %}
 					<div class="cards">
-						{% for item in list %}
+						{% for item in drops %}
 
 
 							<label for="item-{{loop.index}}" class="card-carrousel" id="song-{{loop.index}}">
@@ -58,6 +58,26 @@
 						{% endfor %}
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="high-rate">
+			<h3 class="high-rate-title">People's interest</h3>
+			<div class="high-rate-content container">
+				{% for item in products %}
+					<a href="/product/{{item.id}}" class="product-card">
+						<img src={{item.image}} alt="">
+						<div class="product-card-body ">
+							<div class="container">
+								<div class="product-card-title">
+									{{item.title}}
+								</div>
+								<div class="product-card-text">
+									{{item.price}}$
+								</div>
+							</div>
+						</div>
+					</a>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

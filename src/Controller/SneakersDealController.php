@@ -14,9 +14,11 @@ class SneakersDealController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
         $products = $doctrine->getRepository(Product::class);
-        $list = $products->findAll();
+        $productsList = $products->findAll();
+        $drops = $products->findBy(array('isReleased'=>0));
         return $this->render('sneakers_deal/index.html.twig', [
-            'list' =>  $list
+            'drops' =>  $drops,
+            'products' => $productsList,
         ]);
     }
     #[Route('/drops', name:"drops")]
@@ -32,14 +34,5 @@ class SneakersDealController extends AbstractController
     public function cart()
     {
         # code...
-    }
-    #[Route('/test', name: 'prototype')]
-    public function prototype(ManagerRegistry $doctrine): Response
-    {
-        $products = $doctrine->getRepository(Product::class);
-        $list = $products->findAll();
-        return $this->render('sneakers_deal/prototype.html.twig', [
-            'list' =>  $list
-        ]);
     }
 }

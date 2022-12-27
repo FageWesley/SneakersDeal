@@ -10,6 +10,7 @@ import './styles/app.scss';
 import './styles/navbar.css';
 import './styles/index.css';
 import './styles/carrousel.scss';
+import './styles/login.css'
 
 // start the Stimulus application
 import './bootstrap';

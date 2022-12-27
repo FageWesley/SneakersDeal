@@ -29,12 +29,12 @@ class OrderItem
         return $this->id;
     }
 
-    public function getProduct(): ? Product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(? Product $product): self
+    public function setProduct(?Product $product): self
     {
         $this->product = $product;
 
@@ -53,12 +53,12 @@ class OrderItem
         return $this;
     }
 
-    public function getOrderRef(): ? Order
+    public function getOrderRef(): ?Order
     {
         return $this->orderRef;
     }
 
-    public function setOrderRef(? Order $orderRef): self
+    public function setOrderRef(?Order $orderRef): self
     {
         $this->orderRef = $orderRef;
 

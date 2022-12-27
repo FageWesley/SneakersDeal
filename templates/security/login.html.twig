@@ -3,14 +3,14 @@
 
 
 {% block body %}
-
-	<a href="/"><img class="m-4" style="width:70px;height:70px" src="{{ asset('build/images/Logo.png') }}" alt=""></a>
+<div class="login-body">
+	<a href="/"><img class="login-logo m-4" src="{{ asset('build/images/Logo.png') }}" alt=""></a>
 
 
 	<div class="row m-0">
 
 
-		<div class="offset-lg-1 offset-md-1 offset-sm-1 col-lg-6 col-sm-10">
+		<div class="log-content offset-lg-1 offset-md-1 offset-sm-1 col-lg-6 col-sm-10">
 			<div class="display-6 text-center mb-2 text-white">Log in to SneakersDeal</div>
 			<p class="text-center text-white">Don't hav an account yet ?
 				<a href="/registration">Sign up!</a>
@@ -27,7 +27,7 @@
 				
 
 				<div class="text-center mt-3">
-					<input type="submit" value="Log in" class="btn btn-primary">
+					<input type="submit" value="Log in" class="form-btn btn btn-primary">
 
 				</div>
 
@@ -36,10 +36,10 @@
 
 
 		</div>
-		<img style="" class="offset-lg-0 col-lg-4 col-md-4 col-sm-6 offset-sm-4 img-fluid mt-2" src="{{ asset('build/images/AF1-LV.png') }}" alt="">
+		<img style="" class="Shoe col-4 img-fluid" src="{{ asset('build/images/AF1-LV.png') }}" alt="">
 
 
 	</div>
 
-
+</div>
 {% endblock %}

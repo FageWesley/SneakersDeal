@@ -50,6 +50,7 @@
 							{% endfor %}
 						</ul>
 					</div>
+					{{ form_row(form._token) }}
 					{{ form_end(form, {'render_rest': false}) }}</div>
 				<!-- Summary -->
 				<div class="col-md-4">
@@ -73,7 +74,7 @@
 				</div>
 			</div>
 		{% else %}
-			<div class="alert alert-info">
+			<div class="alert alert-info ">
 				Your cart is empty. Go to the
 				<a href="/">product list</a>.
 			</div>

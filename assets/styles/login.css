@@ -1,0 +1,33 @@
+.login-body{
+    background-color: black;
+    height: 100vh;
+}
+.log-content{
+    margin-top: 100px;
+}
+.login-logo{
+    width: 80px;
+    height: 80px;
+}
+.login-body input{
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+.login-body label{
+    font-size: 20px;
+}
+.form-btn{
+    font-size: 20px;
+    font-weight: 500;
+}
+@media (max-width:990px) {
+    .Shoe{
+        display: none;
+    }
+}
+@media (min-width:990px) {
+    .Shoe{
+        margin-top: 75px;
+        object-fit: contain;
+    }
+}

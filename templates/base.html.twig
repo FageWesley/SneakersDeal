@@ -23,28 +23,11 @@
 
 		{% block navbar %}
 
-			{# <div class="row m-0 border-bottom border-grey">
-				<a class="col-1 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/">Home</a>
-				<a class="col-1 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/drops">Drops</a>
-				<a class="col-1 text-white text-decoration-none d-flex align-self-center justify-content-center" href="">Shop</a>
-
-
-				<p class="offset-2 col-2 d-flex align-items-center justify-content-center pt-2 fs-2 text-white">
-					<img style="height:50px" src="{{ asset('build/images/Logo.png') }}" alt="Logo">SneakersDeal</p>
-				<a class="offset-2 col-1 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/">WishList</a>
-				<a class="col-1 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/cart">Cart
-					<span class="ms-1 badge rounded-pill bg-primary"></span>
-				</a>
-				{% if is_granted('IS_AUTHENTICATED') %}
-					<a class="col-1 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/logout">Logout</a>
-				{% else %}
-					<a class="col-1 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/login">Login</a>
-				{% endif %}
-			</div> #}
+			
 			<div class="Navbar d-flex">
-			<p class="logo-title">
+			<a href="/" class="logo-title">
 				<img src="{{ asset('build/images/Logo.png') }}" alt="Logo">SneakersDeal
-			</p>
+			</a>
 
 			<form action="" method="get" class="searchbar offset-1 col-5">
 
