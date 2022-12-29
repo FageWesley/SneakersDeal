@@ -22,18 +22,18 @@
 		</div>
 
 		<div class="brand-cards mt-5">
-			<div class="card-logo">
+			<a href="/nike" class="card-logo">
 				<img src={{asset('/build/images/Nike-logo.png')}} alt="">
-			</div>
-			<div class="card-logo">
+			</a>
+			<a href="/adidas" class="card-logo">
 				<img src={{asset('/build/images/Adidas-logo.png')}} alt="">
-			</div>
-			<div class="card-logo">
+			</a>
+			<a href="/new_balance" class="card-logo">
 				<img src={{asset('/build/images/New-Balance-logo.png')}} alt="">
-			</div>
-			<div class="card-logo">
+			</a>
+			<a href="/jordan" class="card-logo">
 				<img src={{asset('/build/images/Jordan-logo.png')}} alt="">
-			</div>
+			</a>
 		</div>
 		<div class="section-drops">
 			<div class="section-drop-title  display-5 fw-bold">
@@ -53,21 +53,22 @@
 
 
 							<label for="item-{{loop.index}}" class="card-carrousel" id="song-{{loop.index}}">
-								<img src={{item.image}} alt="{{item.title}}">
+								<img src='uploads/{{item.image}}' alt="{{item.title}}">
 							</label>
 						{% endfor %}
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="high-rate">
 			<h3 class="high-rate-title">People's interest</h3>
 			<div class="high-rate-content container">
 				{% for item in products %}
 					<a href="/product/{{item.id}}" class="product-card">
-						<img src={{item.image}} alt="">
+						<img src='/uploads/{{item.image}}' alt="">
 						<div class="product-card-body ">
-							<div class="container">
+							<div class="container text-truncate">
 								<div class="product-card-title">
 									{{item.title}}
 								</div>

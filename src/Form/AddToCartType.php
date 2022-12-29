@@ -23,7 +23,8 @@ class AddToCartType extends AbstractType
                 ],
             ])
             ->add('add',SubmitType::class,[
-                'label'=> 'Add to cart'
+                'label'=> 'Add to cart',
+            
             ])
         ;
     }

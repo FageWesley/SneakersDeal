@@ -11,8 +11,7 @@
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 		{% endblock %}
 
 		{% block javascripts %}
@@ -23,26 +22,40 @@
 
 		{% block navbar %}
 
-			
+
 			<div class="Navbar d-flex">
-			<a href="/" class="logo-title">
-				<img src="{{ asset('build/images/Logo.png') }}" alt="Logo">SneakersDeal
-			</a>
 
-			<form action="" method="get" class="searchbar offset-1 col-5">
+				<a href="/" class="logo-title">
+					<img src="{{ asset('build/images/Logo.png') }}" alt="Logo">SneakersDeal
+				</a>
 
-				<input type="search" name="search" id="search" placeholder="search" class="w-100">
-				<label for="search" id="submit"><i class="fa-solid fa-magnifying-glass text-white"></i></label>
-			</form>
-			{# <a class="offset-1 col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/drops"><i class="fa-solid fa-calendar"></i></a>
-		 #}	<a class="offset-1 col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/"><i class="fa-solid fa-heart"></i></a>
-			<a class="col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-			{% if is_granted('IS_AUTHENTICATED') %}
-				<a class="col-1 text-white text-decoration-none d-flex align-items-center justify-content-evenly" href="/logout"><i class="fa-solid fa-arrow-right-from-bracket fs-3"></i>Logout</a>
-			{% else %}
-				<a class="col-1 fs-3 text-white text-decoration-none d-flex align-items-center justify-content-evenly" href="/login">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-			{% endif %}
-		</div>
+				<form action="" method="get" class="searchbar nav-item offset-1 col-5">
+
+					<input type="search" name="search" id="search" placeholder="search" class="w-100">
+					<label for="search" id="submit">
+						<i class="fa-solid fa-magnifying-glass text-white"></i>
+					</label>
+				</form>
+				{# <a class="offset-1 col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/drops"><i class="fa-solid fa-calendar"></i></a>#}
+				<div class="nav-icons">
+					<a class="nav-item" href="/">
+						<i class="nav-link fa-solid fa-heart"></i>
+					</a>
+					<a class="nav-item" href="/cart">
+						<i class="fa-solid fa-cart-shopping"></i>
+					</a>
+					{% if is_granted('IS_AUTHENTICATED') %}
+						<a class="nav-item" href="/logout">
+							<i class="fa-solid fa-arrow-right-from-bracket fs-5"></i>
+						</a>
+					{% else %}
+						<a class="nav-item" href="/login">
+							<i class="fa-solid fa-arrow-right-to-bracket"></i>
+						</a>
+					{% endif %}
+				</div>
+
+			</div>
 		{% endblock %}
 
 		{% block body %}{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -18,37 +19,48 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('title', TypeTextType::class, [
-                'label' => "Nom du produit",
-                "row_attr" => ['class' => "text-white col-md-4 fs-3 offset-4"],
+                'label' => "Name of the product",
+
                 "attr" => ['class' => "form-control"],
                 "required" => true,
             ])
+            ->add('brand', ChoiceType::class, [
+                'label' => "Brand",
+                "choices"=>[
+                    "..." => "",
+                    "Nike"=>"Nike",
+                    "Adidas"=>"Adidas",
+                    "Jordan"=>"Jordan",
+                    "New Balance"=>"New_balance",                    
+                ],
+                "attr" => ['class' => "form-select"],
+                "required" => true,
+            ])
             ->add('image', FileType::class, [
-                'label' => "Image du produit",
-                "row_attr" => ['class' => "text-white col-md-4 fs-3 offset-4"],
+                'label' => "Image of the product",
                 "attr" => ['class' => "form-control"],
                 "mapped" => false,
                 "required" => true,
                 "constraints" => [
                     new File([
                         'maxSize' => '5M',
-                        'mimeTypes'=>[
+                        'mimeTypes' => [
                             'image/png',
                             'image/jpg',
                             'image/jpeg',
                         ],
-                        'mimeTypesMessage'=>'Please upload a JPG,JPEG,PNG',
+                        'mimeTypesMessage' => 'Please upload a JPG,JPEG,PNG',
                     ])
                 ]
             ])
             ->add('price', NumberType::class, [
-                'label' => "Prix",
-                "row_attr" => ['class' => "text-white col-md-4 fs-3 offset-4"],
+                'label' => "Price",
+
                 "attr" => ['class' => "form-control"],
                 "required" => true,
             ])
             ->add('ReleaseDate', DateType::class, [
-                "row_attr" => ['class' => "text-white col-md-4 fs-3 offset-4"],
+
                 "attr" => ['class' => "form-control"],
                 "required" => true,
             ]);

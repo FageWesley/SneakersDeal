@@ -1,0 +1,35 @@
+.brand-items{
+    margin-top: 124.6px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+
+}
+.brand-items a{
+    text-decoration: none;
+}
+.brand-items a:hover{
+    text-decoration: underline black 2px;
+}
+.brand-items img{
+    object-fit: contain;
+    width: 200px;
+}
+.brand-card{
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.brand-card-title{
+    font-size: 30px;
+    color: black;
+}
+.brand-card-text{
+    font-size: 24px;
+    font-style: italic;
+    color: black;
+}

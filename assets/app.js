@@ -10,7 +10,12 @@ import './styles/app.scss';
 import './styles/navbar.css';
 import './styles/index.css';
 import './styles/carrousel.scss';
-import './styles/login.css'
+import './styles/login.css';
+import './styles/cart.css';
+import './styles/form.css';
+import './styles/product.css';
+import './styles/brand.css';
+
 
 // start the Stimulus application
 import './bootstrap';
@@ -25,3 +30,10 @@ import './bootstrap';
  $(document).ready(function() {
     carrousel;
  });
+
+ import * as like from "./scripts/like";
+ $(document).ready(function(){
+   like;
+ })
+// this "modifies" the jquery module: adding behavior to it
+// the bootstrap module doesn't export/return anything

@@ -33,10 +33,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'customers')]
     private Collection $buyedProducts;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ProductLike::class, orphanRemoval: true)]
+    private Collection $productLikes;
+
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
         $this->buyedProducts = new ArrayCollection();
+        $this->productLikes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,6 +132,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->buyedProducts->removeElement($buyedProduct)) {
             $buyedProduct->removeCustomer($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductLike>
+     */
+    public function getProductLikes(): Collection
+    {
+        return $this->productLikes;
+    }
+
+    public function addProductLike(ProductLike $productLike): self
+    {
+        if (!$this->productLikes->contains($productLike)) {
+            $this->productLikes->add($productLike);
+            $productLike->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductLike(ProductLike $productLike): self
+    {
+        if ($this->productLikes->removeElement($productLike)) {
+            // set the owning side to null (unless already changed)
+            if ($productLike->getUser() === $this) {
+                $productLike->setUser(null);
+            }
         }
 
         return $this;

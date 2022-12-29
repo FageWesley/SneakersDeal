@@ -34,9 +34,16 @@ class Product
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $ReleaseDate = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $brand = null;
+
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: ProductLike::class, orphanRemoval: true)]
+    private Collection $productLikes;
+
     public function __construct()
     {
         $this->customers = new ArrayCollection();
+        $this->productLikes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,6 +132,48 @@ class Product
     public function setReleaseDate(\DateTimeInterface $ReleaseDate): self
     { 
         $this->ReleaseDate = $ReleaseDate;
+
+        return $this;
+    }
+
+    public function getBrand(): ?string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(string $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductLike>
+     */
+    public function getProductLikes(): Collection
+    {
+        return $this->productLikes;
+    }
+
+    public function addProductLike(ProductLike $productLike): self
+    {
+        if (!$this->productLikes->contains($productLike)) {
+            $this->productLikes->add($productLike);
+            $productLike->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductLike(ProductLike $productLike): self
+    {
+        if ($this->productLikes->removeElement($productLike)) {
+            // set the owning side to null (unless already changed)
+            if ($productLike->getProduct() === $this) {
+                $productLike->setProduct(null);
+            }
+        }
 
         return $this;
     }

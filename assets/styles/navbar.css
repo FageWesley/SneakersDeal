@@ -9,11 +9,12 @@ body {
 }
 
 .Navbar {
-    background-color: #0D3B66;
+    background-color: #212529;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    justify-content: space-between;
 }
 
 
@@ -28,7 +29,8 @@ body {
     text-decoration: none;
     margin-bottom: 16px;
 }
-.logo-title:hover{
+
+.logo-title:hover {
     color: white;
 }
 
@@ -59,4 +61,20 @@ body {
     padding: 7px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.nav-icons {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: end;
+    
+}
+.nav-icons a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
 }

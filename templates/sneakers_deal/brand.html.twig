@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+	<div class="brand-items container">
+		{% for item in list %}
+			<a href="/product/{{item.id}}" class="brand-card">
+				<img src='/uploads/{{item.image}}' alt="">
+				<div class="brand-card-body ">
+					<div class="container text-truncate">
+						<div class="brand-card-title">
+							{{item.title}}
+						</div>
+						<div class="brand-card-text">
+							{{item.price}}$
+						</div>
+					</div>
+				</div>
+			</a>
+            <hr>
+		{% endfor %}
+	</div>
+
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\ProductLike;
 use App\Form\AddToCartType;
 use App\Form\ProductType;
 use App\Manager\CartManager;
@@ -53,11 +54,16 @@ class ProductController extends AbstractController
 
     #[Route("/product/{id}", name:"product.detail")]
     
-    public function detail(Product $product, Request $request, CartManager $cartManager)
+    public function detail(Product $product, Request $request, CartManager $cartManager, ManagerRegistry $doctrine)
     {
         $form = $this->createForm(AddToCartType::class);
 
         $form->handleRequest($request);
+        $user = $this->getUser();
+        $em = $doctrine->getManager();
+
+        $isBlogAlreadyLike = $em->getRepository(ProductLike::class)->countByProductAndUser($user, $product);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
@@ -75,7 +81,10 @@ class ProductController extends AbstractController
 
         return $this->render('products/product.html.twig', [
             'product' => $product,
+            "isBlogAlreadyLiked" => $isBlogAlreadyLike,
             'form' => $form->createView()
+
         ]);
     }
+    
 }

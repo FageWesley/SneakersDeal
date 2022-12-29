@@ -1,0 +1,31 @@
+.product-page{
+    margin-top: 124.6px;
+    background-color: white;
+    padding: 20px;
+}
+.product-page label{
+    color: black;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.product-page select{
+    width: 50px;
+}
+#add_to_cart_add{
+    border-radius: 10px;
+    background-color: #0D3B66;
+    color: white;
+    border: 0px black solid;
+    padding: 10px 20px;
+
+}
+.product-page h1, .product-page h2, .product-page b, .product-page hr{
+    color: black;
+}
+.btn-to-cart{
+    text-align: end;
+}
+
+.list-group-item img{
+    width: 200px;
+}

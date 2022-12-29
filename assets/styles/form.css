@@ -1,0 +1,62 @@
+.form-create {
+    margin-top: 124.6px;
+    background-color: #0D3B66;
+    padding: 30px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.form-create input {
+    width: 75%;
+    margin: auto;
+}
+.form-create select {
+    width: 75%;
+    margin: auto;
+}
+#product_ReleaseDate {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    
+}
+.form-create label{
+    width: 75%;
+    text-align: left;
+    margin: auto;
+    color: white;
+    font-size: 24px;
+}
+.form-create div{
+    text-align: center;
+}
+#product_ReleaseDate_month{
+    border-radius: 5px;
+    
+}
+#product_ReleaseDate_day{
+    border-radius: 5px;
+}
+#product_ReleaseDate_year{
+    border-radius: 5px;
+}
+@media (max-width : 1000px) {
+    .form-create {
+        width: 50%;
+    }
+    
+    .form-create input {
+        width: 100%;
+    }
+    .form-create select {
+        width: 100%;
+    }
+    #product_ReleaseDate {
+        width: 100%;
+    }
+    .form-create label{
+        width: 100%;
+        
+    }
+}

@@ -24,10 +24,10 @@
 							{% for item in form.items %}
 								<li class="list-group-item d-flex">
 									<div class="flex-fill mr-2">
-										<img src="https://via.placeholder.com/200x150" width="64" alt="Product image">
+										<img src="/uploads/{{item.vars.data.product.image}}"  alt="{{ item.vars.data.product.title }}">
 									</div>
 									<div class="flex-fill mr-2">
-										<h5 class="mt-0 mb-0">{{ item.vars.data.product.title }}</h5>
+									<h5 class="mt-0 mb-0">{{ item.vars.data.product.title }} </h5>
 										<div class="form-inline mt-2">
 											<div class="form-group mb-0 mr-2">
 												{{ form_widget(item.quantity, {
@@ -74,10 +74,31 @@
 				</div>
 			</div>
 		{% else %}
-			<div class="alert alert-info ">
-				Your cart is empty. Go to the
-				<a href="/">product list</a>.
-			</div>
+			{% if is_granted('IS_AUTHENTICATED') %}
+				<div class="empty-cart container bg-dark">
+					<img class="img-fluid" src="{{asset('build/images/Jordan4-military.png')}}" alt="">
+					<p class="empty-cart-text">
+						Your Sneakersdeal cart is empty. Go to the
+						<a href="/" class="text-primary">product list</a>.
+					</p>
+				</div>
+			{% else %}
+				<div class="cart-non-connected container bg-dark">
+
+					<img class="img-fluid" src="{{asset('build/images/Jordan4-military.png')}}" alt="">
+					<div>
+						<p class="empty-cart-text ">
+							You must be connected to start adding things to your cart.
+
+						</p>
+						<div class="btn-login">
+							
+							<a href="/registration">Create an account</a>
+							<a href="/login" >Login</a>
+						</div>
+					</div>
+				</div>
+			{% endif %}
 		{% endif %}
 	</div>
 {% endblock %}

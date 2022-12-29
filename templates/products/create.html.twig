@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArtcileController!
+{% block title %}Create a product
 {% endblock %}
 
 {% block body %}
 
-	<div class="form-create">
+	<div class="form-create container">
 		{{ form_start(form) }}
 		{{form_row(form.title)}}
+		{{form_row(form.brand)}}
 		{{form_row(form.image)}}
 		{{form_row(form.price)}}
 		{{form_row(form.ReleaseDate)}}
 
 		<div class="text-center mt-3">
-			<input type="submit" value="Créer" class="btn btn-primary ">
+			<input type="submit" value="Create" class="btn btn-primary ">
 
 		</div>
 		{{ form_end(form) }}
