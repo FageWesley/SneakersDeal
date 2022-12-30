@@ -12,6 +12,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\FileUploader;
 use DateTimeImmutable;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     #[Route('/product/create')]
+   
     public function create(Request $request, ManagerRegistry $doctrine, FileUploader $fileUploader): Response
     {
         $product = new Product();
@@ -53,7 +56,7 @@ class ProductController extends AbstractController
     }
 
     #[Route("/product/{id}", name:"product.detail")]
-    
+
     public function detail(Product $product, Request $request, CartManager $cartManager, ManagerRegistry $doctrine)
     {
         $form = $this->createForm(AddToCartType::class);
@@ -81,7 +84,7 @@ class ProductController extends AbstractController
 
         return $this->render('products/product.html.twig', [
             'product' => $product,
-            "isBlogAlreadyLiked" => $isBlogAlreadyLike,
+            'isBlogAlreadyLiked' => $isBlogAlreadyLike,
             'form' => $form->createView()
 
         ]);

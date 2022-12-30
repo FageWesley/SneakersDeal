@@ -31,7 +31,7 @@ import './bootstrap';
     carrousel;
  });
 
- import * as like from "./scripts/like";
+var like = require('./scripts/like')
  $(document).ready(function(){
    like;
  })

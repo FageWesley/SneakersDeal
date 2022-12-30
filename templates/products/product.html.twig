@@ -4,6 +4,42 @@
 {% block title %}
 	{{ product.title }}
 {% endblock %}
+{% block javascripts %}
+	{{parent()}}
+	<script>
+		$(document).on('click', "#product-like", function (e) {
+e.preventDefault();
+
+var url = $(this).attr('href');
+var entityId = $(this).attr('data-entity-id')
+var csrfToken = $(this).attr('data-csrf-token')
+var isLiked = $(this).attr('data-liked')
+
+if (isLiked === "0") {
+$(this).attr('data-liked', 1);
+$('.fa-heart').addClass("liked").text(" Unlike")
+} else {
+$(this).attr('data-liked', 0);
+$('.fa-heart').removeClass("liked").text(" Like")
+}
+$.ajax({
+type: 'POST',
+dataType: 'json',
+data: {
+'entityId': entityId,
+'csrfToken': csrfToken
+},
+url: url,
+success: function () {
+console.log('succes')
+},
+error: function () { // do something like reset icon
+console.log("didnt work")
+}
+});
+})
+	</script>
+{% endblock %}
 
 {% block body %}
 	<div class="product-page container text-white">
@@ -19,7 +55,7 @@
 				<b>Description:
 				</b>
 				{{form_start(form)}}
-				{% if is_granted('IS_AUTHENTICATED') %}{% endif %}
+
 
 				{{form_row(form.quantity)}}
 				{{form_widget(form.add,
@@ -35,17 +71,15 @@
 				{{form_end(form)}}
 			</div>
 		</div>
-		<a href="{{path('front_product_like_unlike')}} " id='product-like'
-		data-entity-id = "{{ product.id }}"
-		data-csrf-token ="{{ csrf_token('product' ~ product.id) }}"
-		data-liked="{{ isBlogAlreadyLiked == true ? '1' : '0' }}"
-		>&nbsp;
-		<i class="far fa-thumbs-up {{isBlogAlreadyLiked == true ? 'liked' : '' }}">
-		{{ isBlogAlreadyLiked == true ? 'Unlike' : 'Like' }}
-		</i>
-		
-		
-		
-		</a>
+		{% if is_granted('IS_AUTHENTICATED') %}
+			<a href="{{path('front_product_like_unlike')}}" id='product-like' data-entity-id="{{ product.id }}" data-csrf-token="{{ csrf_token('product' ~ product.id) }}" data-liked="{{ isBlogAlreadyLiked == true ? '1' : '0' }}">&nbsp;
+
+				<i class="like-btn fa-solid fa-heart {{isBlogAlreadyLiked == true ? 'liked ' : '' }} ">
+					{{ isBlogAlreadyLiked == true ? ' Unlike' : ' Like' }}
+				</i>
+
+
+			</a>
+		{% endif %}
 	</div>
 {% endblock %}
