@@ -17,10 +17,10 @@ var isLiked = $(this).attr('data-liked')
 
 if (isLiked === "0") {
 $(this).attr('data-liked', 1);
-$('.fa-heart').addClass("liked").text(" Unlike")
+$('.like-btn').addClass("liked").text(" Unlike")
 } else {
 $(this).attr('data-liked', 0);
-$('.fa-heart').removeClass("liked").text(" Like")
+$('.like-btn').removeClass("liked").text(" Like")
 }
 $.ajax({
 type: 'POST',
@@ -52,13 +52,24 @@ console.log("didnt work")
 				<h2>{{ product.price }}
 					€</h2>
 				<hr>
-				<b>Description:
-				</b>
 				{{form_start(form)}}
 
+				<div class="add-cart-like-btn">
+					{{form_label(form.quantity)}}
+					{{form_widget(form.quantity, {
+					"attr" : {'class' : "form-select"},
+				})}}
+					{% if is_granted('IS_AUTHENTICATED') %}
+						<a class="like-btn-link" href="{{path('front_product_like_unlike')}}" id='product-like' data-entity-id="{{ product.id }}" data-csrf-token="{{ csrf_token('product' ~ product.id) }}" data-liked="{{ isBlogAlreadyLiked == true ? '1' : '0' }}">&nbsp;
 
-				{{form_row(form.quantity)}}
-				{{form_widget(form.add,
+							<i class="like-btn fa-solid fa-heart {{isBlogAlreadyLiked == true ? 'liked ' : '' }} ">
+								{{ isBlogAlreadyLiked == true ? ' Unlike' : ' Like' }}
+							</i>
+
+
+						</a>
+					{% endif %}
+					{{form_widget(form.add,
 				{
 					'attr' :{ 
 						'class':(is_granted('IS_AUTHENTICATED')?'':'disabled') 
@@ -68,18 +79,11 @@ console.log("didnt work")
 					}
 				})}}
 
-				{{form_end(form)}}
+					{{form_end(form)}}
+
+				</div>
 			</div>
 		</div>
-		{% if is_granted('IS_AUTHENTICATED') %}
-			<a href="{{path('front_product_like_unlike')}}" id='product-like' data-entity-id="{{ product.id }}" data-csrf-token="{{ csrf_token('product' ~ product.id) }}" data-liked="{{ isBlogAlreadyLiked == true ? '1' : '0' }}">&nbsp;
 
-				<i class="like-btn fa-solid fa-heart {{isBlogAlreadyLiked == true ? 'liked ' : '' }} ">
-					{{ isBlogAlreadyLiked == true ? ' Unlike' : ' Like' }}
-				</i>
-
-
-			</a>
-		{% endif %}
 	</div>
 {% endblock %}

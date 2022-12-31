@@ -29,3 +29,30 @@
 .list-group-item img{
     width: 200px;
 }
+
+.like-btn-link {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #0D3B66;
+    color: white;
+    border: 0px black solid;
+    padding: 10px 20px;
+    min-width: 128.45px;
+    margin:0px  10px;
+    
+    
+}
+.add-cart-like-btn{
+    display: flex;
+    justify-content: center;
+}
+.add-cart-like-btn select{
+    width: 10%;
+}
+.add-cart-like-btn label{
+    align-self: center;
+}

@@ -13,11 +13,11 @@ class ProductLike
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity:'product',inversedBy: 'productLikes')]
+    #[ORM\ManyToOne(targetEntity:'Product',inversedBy: 'productLikes')]
     #[ORM\JoinColumn(nullable: false)]
     private $product ;
 
-    #[ORM\ManyToOne(targetEntity:'user',inversedBy: 'productLikes')]
+    #[ORM\ManyToOne(targetEntity:'User',inversedBy: 'productLikes')]
     #[ORM\JoinColumn(nullable: false)]
     private $user ;
 
