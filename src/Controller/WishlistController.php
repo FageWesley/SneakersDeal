@@ -19,17 +19,17 @@ class WishlistController extends AbstractController
         $productsLiked = $em->getRepository(ProductLike::class)->findAll();
         $products = [];
         foreach ($productsLiked as $item) {
-            
-            
-           array_push($products, $em->getRepository(Product::class)->findBy(array('id'=>$item->getProduct()))); 
+           array_push($products, $em->getRepository(Product::class)->findBy(array('id'=>$item->getProduct())));
         }
         
-
+        
+       
 
 
 
         return $this->render('wishlist/index.html.twig', [
-            'products' => $products
+            'products' => $products,
+            'productsLiked' =>$productsLiked
         ]);
     }
 }

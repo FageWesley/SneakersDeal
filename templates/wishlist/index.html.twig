@@ -1,13 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Wishlist{% endblock %}
+{% block title %}Wishlist
+{% endblock %}
 
 {% block body %}
+	<div class="wishlist-body container">
+		{% if is_granted('IS_AUTHENTICATED')  %}
+			{% for item in products %}
+				{% if productsLiked[(loop.index)-1].user.id is same as(app.user.id) %}
 
-{% for item in products %}
-<h1>{{item[0].title}}</h1>
-<img src="/uploads/{{item[0].image}}" alt="{{item[0].title}}">
-<p>{{item[0].price}}$</p>
-{% endfor %}
+					<a href="/product/{{item[0].id}}" class="product-wishlist">
 
+						<img src="/uploads/{{item[0].image}}" alt="{{item[0].title}}">
+						<div class="title-price-wishlist">
+							<h1>{{item[0].title}}</h1>
+							<p>{{item[0].price}}$</p>
+						</div>
+					</a>
+
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<div class="error-message">
+				<p>You have to be connected to access the wishlist</p>
+			</div>
+		{% endif %}
+	</div>
 {% endblock %}

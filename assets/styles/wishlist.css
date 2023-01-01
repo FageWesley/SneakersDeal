@@ -1,0 +1,29 @@
+.wishlist-body{
+    margin-top: 124.6px;
+    color: black;
+}
+.product-wishlist{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 20px;
+    
+}
+.product-wishlist img{
+    width: 200px;
+    object-fit: contain;
+    margin-left: 10px;
+}
+.title-price-wishlist{
+    margin-left: 10px;
+}
+.product-wishlist{
+    text-decoration: none;
+    color: black;
+}
+.product-wishlist:hover{
+    color: black;
+    filter: brightness(90%);
+}

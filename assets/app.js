@@ -15,6 +15,7 @@ import './styles/cart.css';
 import './styles/form.css';
 import './styles/product.css';
 import './styles/brand.css';
+import './styles/wishlist.css';
 
 
 // start the Stimulus application
