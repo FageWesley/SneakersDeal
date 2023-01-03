@@ -2,6 +2,10 @@
 
 
 {% block body %}
+	{% block search_bar %}
+		
+		
+	{% endblock %}
 	<div class="brand-items container">
 		{% for item in list %}
 			<a href="/product/{{item.id}}" class="brand-card">
@@ -17,7 +21,7 @@
 					</div>
 				</div>
 			</a>
-            <hr>
+			<hr>
 		{% endfor %}
 	</div>
 

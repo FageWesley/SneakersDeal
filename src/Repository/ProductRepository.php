@@ -38,6 +38,34 @@ class ProductRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findProductByTitle($query)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+        ->where(
+            $qb->expr()->andX(
+                    $qb->expr()->like('p.title', ':query'),
+                )
+            
+        )
+        ->setParameter('query', '%' . $query . '%')
+    ;
+    return $qb
+        ->getQuery()
+        ->getResult();
+    }
+    public function sortByPrice($query)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+        ->select("p")
+        ->where("p.price < :price")
+        ->setParameter('price',$query)
+    ;
+    return $qb
+        ->getQuery()
+        ->getResult();
+    }
 
 //    /**
 //     * @return Product[] Returns an array of Product objects

@@ -7,8 +7,9 @@
     height: 200px;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #f5f5f5;
     margin-bottom: 20px;
+    border-radius: 3px;
     
 }
 .product-wishlist img{

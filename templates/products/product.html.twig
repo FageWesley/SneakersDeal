@@ -15,7 +15,7 @@ var entityId = $(this).attr('data-entity-id')
 var csrfToken = $(this).attr('data-csrf-token')
 var isLiked = $(this).attr('data-liked')
 
-if (isLiked === "0") {
+if (isLiked == "0") {
 $(this).attr('data-liked', 1);
 $('.like-btn').addClass("liked").text(" Unlike")
 } else {
@@ -60,10 +60,10 @@ console.log("didnt work")
 					"attr" : {'class' : "form-select"},
 				})}}
 					{% if is_granted('IS_AUTHENTICATED') %}
-						<a class="like-btn-link" href="{{path('front_product_like_unlike')}}" id='product-like' data-entity-id="{{ product.id }}" data-csrf-token="{{ csrf_token('product' ~ product.id) }}" data-liked="{{ isBlogAlreadyLiked == true ? '1' : '0' }}">&nbsp;
+						<a class="like-btn-link" href="{{path('front_product_like_unlike')}}" id='product-like' data-entity-id="{{ product.id }}" data-csrf-token="{{ csrf_token('product' ~ product.id) }}" data-liked="{{ isProductAlreadyLiked == true ? '1' : '0' }}">&nbsp;
 
-							<i class="like-btn fa-solid fa-heart {{isBlogAlreadyLiked == true ? 'liked ' : '' }} ">
-								{{ isBlogAlreadyLiked == true ? ' Unlike' : ' Like' }}
+							<i class="like-btn fa-solid fa-heart {{isProductAlreadyLiked == product.id ? 'liked ' : '' }} ">
+								{{ isProductAlreadyLiked == product.id ? ' Unlike' : ' Like' }}
 							</i>
 
 

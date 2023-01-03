@@ -75,8 +75,8 @@
     object-fit:cover;
 }
 .product-card{
-    background: white;
-    border-radius: 3px;
+    background: #f5f5f5;
+   border-radius: 3px;
     border:#757878 1px solid;
     margin: 10px;
     position: relative;

@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="wishlist-body container">
 		{% if is_granted('IS_AUTHENTICATED')  %}
 			{% for item in products %}

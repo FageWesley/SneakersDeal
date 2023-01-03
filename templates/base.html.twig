@@ -30,14 +30,16 @@
 				<a href="/" class="logo-title">
 					<img src="{{ asset('build/images/Logo.png') }}" alt="Logo">SneakersDeal
 				</a>
-
-				<form action="" method="get" class="searchbar nav-item offset-1 col-5">
-
-					<input type="search" name="search" id="search" placeholder="search" class="w-100">
-					<label for="search" id="submit">
-						<i class="fa-solid fa-magnifying-glass text-white"></i>
-					</label>
-				</form>
+				
+				<form action="{{path('app_research')}}" method="post" class="searchbar nav-item offset-1 col-5">
+				
+									<input type="search" name="search" id="search" placeholder="search" class="w-100">
+									
+									<button for="submit" id="submit">
+										<i class="fa-solid fa-magnifying-glass text-white"></i>
+									</button>
+					
+								</form>
 				{# <a class="offset-1 col-1 fs-3 text-white text-decoration-none d-flex align-self-center justify-content-center" href="/drops"><i class="fa-solid fa-calendar"></i></a>#}
 				<div class="nav-icons">
 					<a class="nav-item" href="/wishlist">

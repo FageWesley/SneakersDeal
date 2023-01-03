@@ -74,12 +74,13 @@
 				</div>
 			</div>
 		{% else %}
-			{% if is_granted('IS_AUTHENTICATED') %}
+		{% if is_granted('IS_AUTHENTICATED') %}
+		
 				<div class="empty-cart container bg-dark">
 					<img class="img-fluid" src="{{asset('build/images/Jordan4-military.png')}}" alt="">
 					<p class="empty-cart-text">
-						Your Sneakersdeal cart is empty. Go to the
-						<a href="/" class="text-primary">product list</a>.
+						Your cart is empty. <br>
+						<a href="{{path('all_products')}}"  class="text-primary">  Start shopping</a>.
 					</p>
 				</div>
 			{% else %}

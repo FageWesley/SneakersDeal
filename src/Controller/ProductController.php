@@ -14,6 +14,7 @@ use App\Service\FileUploader;
 use DateTimeImmutable;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     #[Route('/product/create')]
-   
+
     public function create(Request $request, ManagerRegistry $doctrine, FileUploader $fileUploader): Response
     {
         $product = new Product();
@@ -33,8 +34,8 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $imageFile */
             $imageFile = $form->get('image')->getData();
-            if($imageFile){
-                $image= $fileUploader->upload($imageFile);
+            if ($imageFile) {
+                $image = $fileUploader->upload($imageFile);
                 $product->setImage($image);
             }
 
@@ -47,7 +48,6 @@ class ProductController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
-            
         }
 
         return $this->render("products/create.html.twig", [
@@ -55,7 +55,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route("/product/{id}", name:"product.detail")]
+    #[Route("/product/{id}", name: "product.detail")]
 
     public function detail(Product $product, Request $request, CartManager $cartManager, ManagerRegistry $doctrine)
     {
@@ -65,7 +65,7 @@ class ProductController extends AbstractController
         $user = $this->getUser();
         $em = $doctrine->getManager();
 
-        $isBlogAlreadyLike = $em->getRepository(ProductLike::class)->countByProductAndUser($user, $product);
+        $isProductAlreadyLike = $em->getRepository(ProductLike::class)->countByProductAndUser($user, $product);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,10 +84,20 @@ class ProductController extends AbstractController
 
         return $this->render('products/product.html.twig', [
             'product' => $product,
-            'isBlogAlreadyLiked' => $isBlogAlreadyLike,
+            'isProductAlreadyLiked' => $isProductAlreadyLike,
             'form' => $form->createView()
 
         ]);
     }
-    
+
+    #[Route("/products/all", name: "all_products")]
+    public function all_products(ManagerRegistry $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $all_products = $em->getRepository(Product::class)->findAll();
+
+        return $this->render("sneakers_deal/all_products.html.twig", [
+            'products' => $all_products
+        ]);
+    }
 }

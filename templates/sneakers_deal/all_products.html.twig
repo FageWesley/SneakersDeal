@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<div class="wishlist-body container">
+
+		{% for item in products %}
+
+
+			<a href="/product/{{item.id}}" class="product-wishlist">
+
+				<img src="/uploads/{{item.image}}" alt="{{item.title}}">
+				<div class="title-price-wishlist">
+					<h1>{{item.title}}</h1>
+					<p>{{item.price}}$</p>
+				</div>
+			</a>
+
+
+		{% endfor %}
+
+
+	</div>
+{% endblock %}
