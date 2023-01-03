@@ -60,6 +60,7 @@ class ProductRepository extends ServiceEntityRepository
         $qb
         ->select("p")
         ->where("p.price < :price")
+        ->orderBy("p.price")
         ->setParameter('price',$query)
     ;
     return $qb

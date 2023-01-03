@@ -33,6 +33,16 @@ class ProductLikeRepository extends ServiceEntityRepository
         ;
         return $qb->getQuery()->getSingleScalarResult();
     }
+   /*  public function findTheMostLiked()
+    {
+        $qb = $this->createQueryBuilder('b')
+        ->select('count(b)')
+        ->select('b.id')
+        ->groupBy('b.product')
+        ->setMaxResults(3)
+        ;
+        return $qb->getQuery()->getResult();
+    } */
     public function save(ProductLike $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

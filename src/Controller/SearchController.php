@@ -20,7 +20,7 @@ class SearchController extends AbstractController
             'method' => 'POST'
 
         ]);
-        $query = 'air';
+        $query = $_POST['search'];
         $results = $repo->findProductByTitle($query);
 
         return $this->render('search/search_results.html.twig', [

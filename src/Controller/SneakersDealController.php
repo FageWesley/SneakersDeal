@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\ProductLike;
 use App\Form\SearchType;
 use App\Repository\ProductRepository;
 use App\Service\Search;

@@ -142,3 +142,23 @@
 .text-truncate{
     max-width: fit-content;
 }
+
+@media (max-width : 1000px) {
+    .brand-cards{
+        width: 100%
+    }
+    .card-logo img{
+        width :100%;
+        justify-content: space-evenly;
+    }
+    .card-logo{
+        width: 20%;
+        height: 200px;
+        
+    }
+    .main-page-div img{
+        display: none;
+        width: 0%;
+
+    }
+}
